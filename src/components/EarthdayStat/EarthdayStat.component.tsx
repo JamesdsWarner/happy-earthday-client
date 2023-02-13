@@ -15,9 +15,9 @@ const EarthdayStat: React.FC<PropsFunction> = ({
   return (
     <Styled.EarthdayStatWrapper isBirthdaySubmitted={isBirthdaySubmitted}>
       <Styled.EarthdayStatDay>{daysBetween} days</Styled.EarthdayStatDay>
-      <Styled.EarthdayStatHours>{timeBetween.hours} hours</Styled.EarthdayStatHours>
-      <Styled.EarthdayStatMinutes>{timeBetween.minutes} minutes</Styled.EarthdayStatMinutes>
-      <Styled.EarthdayStatSeconds>{timeBetween.seconds} seconds</Styled.EarthdayStatSeconds>
+      <Styled.EarthdayStatHours>
+        {timeBetween.hours} hours, {timeBetween.minutes} minutes and {timeBetween.seconds} seconds.
+      </Styled.EarthdayStatHours>
     </Styled.EarthdayStatWrapper>
   );
 };

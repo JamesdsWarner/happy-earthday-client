@@ -6,9 +6,14 @@ import * as Styled from './EnterBirthday.styles';
 interface PropsFunction {
   setBirthday: (item: any) => void;
   setIsBirthdaySubmitted: (item: any) => void;
+  isBirthdaySubmitted: any;
 }
 
-const EnterBirthday: React.FC<PropsFunction> = ({ setBirthday, setIsBirthdaySubmitted }) => {
+const EnterBirthday: React.FC<PropsFunction> = ({
+  setBirthday,
+  setIsBirthdaySubmitted,
+  isBirthdaySubmitted,
+}) => {
   const handleBirthdayChange = (event: any) => {
     setBirthday(event.target.value);
   };
@@ -17,8 +22,8 @@ const EnterBirthday: React.FC<PropsFunction> = ({ setBirthday, setIsBirthdaySubm
     setIsBirthdaySubmitted(true);
   };
   return (
-    <Styled.EnterBirthdayWrapper>
-      <Styled.EnterBirthdayText>Enter your birthday</Styled.EnterBirthdayText>
+    <Styled.EnterBirthdayWrapper isBirthdaySubmitted={isBirthdaySubmitted}>
+      <Styled.EnterBirthdayText>When's your birthday?</Styled.EnterBirthdayText>
       <Styled.EnterBirthdayInput
         onChange={(event) => handleBirthdayChange(event)}
         type="date"

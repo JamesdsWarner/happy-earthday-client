@@ -1,6 +1,10 @@
 import * as Styled from './Introduction.styles';
+import ParticlesBackground from '../shared/ParticlesBackground/ParticlesBackground.component';
+import data from '../../../data/particlesjs-stars-config';
+import Header from '../shared/Header/Header.component';
 import EnterBirthday from '../EnterBirthday/EnterBirthday.component';
 import EarthdayStat from '../EarthdayStat/EarthdayStat.component';
+import HomeCTA from '../HomeCTA/HomeCTA.component';
 import { useState } from 'react';
 import intervalToDuration from 'date-fns/intervalToDuration';
 import differenceInCalendarDays from 'date-fns/differenceInCalendarDays';
@@ -34,12 +38,20 @@ const Introduction = () => {
 
   return (
     <Styled.IntroductionWrapper isBirthdaySubmitted={isBirthdaySubmitted}>
-      <EnterBirthday setIsBirthdaySubmitted={setIsBirthdaySubmitted} setBirthday={setBirthday} />
+      <ParticlesBackground data={data} id="tsparticles-stars" />
+      <Header />
+      <Styled.GetEarthdayText>Get your Earthday.</Styled.GetEarthdayText>
+      <EnterBirthday
+        isBirthdaySubmitted={isBirthdaySubmitted}
+        setIsBirthdaySubmitted={setIsBirthdaySubmitted}
+        setBirthday={setBirthday}
+      />
       <EarthdayStat
         isBirthdaySubmitted={isBirthdaySubmitted}
         timeBetween={timeBetween}
         daysBetween={daysBetween}
       />
+      <HomeCTA isBirthdaySubmitted={isBirthdaySubmitted} />
     </Styled.IntroductionWrapper>
   );
 };
