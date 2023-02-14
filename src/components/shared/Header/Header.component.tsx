@@ -4,7 +4,7 @@ import Button from '../Button/Button.component';
 const Header = () => {
   return (
     <Styled.HeaderWrapper>
-      <Styled.HeaderLogoWrapper>Earthday</Styled.HeaderLogoWrapper>
+      <Styled.HeaderLogoWrapper>HETY</Styled.HeaderLogoWrapper>
       <Button text="Sign in" icon />
     </Styled.HeaderWrapper>
   );

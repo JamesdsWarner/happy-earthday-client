@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 import { Icon } from '@iconify/react';
 
-export const ButtonWrapper = styled.div`
-  /* height: 20px; */
-
-  /* width: max-content; */
+export const BaseButton = styled.div`
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 25px;
@@ -15,11 +12,31 @@ export const ButtonWrapper = styled.div`
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-align: center;
 
   &:hover {
     background-color: #0081a7;
     color: #f2f2f2;
   }
+`;
+
+export const BaseReversed = styled(BaseButton)`
+  background-color: #0081a7;
+  color: #f2f2f2;
+  border: 2px solid #f2f2f2;
+  &:hover {
+    background-color: transparent;
+    border: 2px solid #0081a7;
+    color: #1f1f1f;
+  }
+`;
+
+export const BaseLong = styled(BaseButton)`
+  width: 400px;
+`;
+
+export const BaseLongReversed = styled(BaseReversed)`
+  width: 400px;
 `;
 
 export const ButtonInnerWrapper = styled.div``;
