@@ -16,6 +16,7 @@ const EnterBirthday: React.FC<PropsFunction> = ({
 }) => {
   const handleBirthdayChange = (event: any) => {
     setBirthday(event.target.value);
+    console.log(event.target.value);
   };
 
   const handleBirthdaySubmit = () => {

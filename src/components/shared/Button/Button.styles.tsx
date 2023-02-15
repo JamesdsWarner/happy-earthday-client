@@ -39,6 +39,17 @@ export const BaseLongReversed = styled(BaseReversed)`
   width: 400px;
 `;
 
+export const LogoutRed = styled(BaseButton)`
+  background-color: #d94e4e;
+  color: #f2f2f2;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+    background-color: #d94e4e;
+  }
+`;
+
 export const ButtonInnerWrapper = styled.div``;
 
 export const ButtonIcon = styled(Icon)``;

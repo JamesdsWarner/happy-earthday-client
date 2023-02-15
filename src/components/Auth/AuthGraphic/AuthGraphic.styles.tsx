@@ -39,10 +39,3 @@ export const AuthGraphicSubheader = styled.h3`
   font-size: 16px;
   margin-top: 10px;
 `;
-
-export const LineDivider = styled.div`
-  width: 100px;
-  height: 1px;
-  border: 1px solid #c8c8c8;
-  border-radius: 5px;
-`;

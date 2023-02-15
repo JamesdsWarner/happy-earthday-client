@@ -3,11 +3,13 @@ import ParticlesBackground from '../shared/ParticlesBackground/ParticlesBackgrou
 import data from '../../../data/particlesjs-stars-config';
 import Header from '../shared/Header/Header.component';
 import EnterBirthday from './EnterBirthday/EnterBirthday.component';
-import EarthdayStat from './EarthdayStat/EarthdayStat.component';
+// import EarthdayStat from './EarthdayStat/EarthdayStat.component';
 import HomeCTA from './HomeCTA/HomeCTA.component';
+import EarthdayTimer from '../shared/EarthdayTimer/EarthdayTimer.component';
 import { useState } from 'react';
 import intervalToDuration from 'date-fns/intervalToDuration';
 import differenceInCalendarDays from 'date-fns/differenceInCalendarDays';
+import remainingDays from 'helpers/remainingDays';
 
 const Landing = () => {
   const [birthday, setBirthday] = useState<Date>();
@@ -15,22 +17,10 @@ const Landing = () => {
   const [daysBetween, setDaysBetween] = useState<Number>(0);
   const [isBirthdaySubmitted, setIsBirthdaySubmitted] = useState<boolean>(false);
 
+  // console.log(daysBetween);
+
   if (isBirthdaySubmitted) {
-    const remaining = () => {
-      const now = new Date();
-      const end = new Date(birthday!);
-      const newTimeBetween = intervalToDuration({
-        start: now,
-        end: end,
-      });
-      setTimeBetween(newTimeBetween);
-
-      const newDaysBetween = differenceInCalendarDays(now, end);
-
-      setDaysBetween(newDaysBetween);
-    };
-
-    setInterval(remaining, 1000);
+    setInterval(() => remainingDays({ birthday, setTimeBetween, setDaysBetween }), 1000);
   }
 
   return (
@@ -43,10 +33,12 @@ const Landing = () => {
         setIsBirthdaySubmitted={setIsBirthdaySubmitted}
         setBirthday={setBirthday}
       />
-      <EarthdayStat
+
+      <EarthdayTimer
         isBirthdaySubmitted={isBirthdaySubmitted}
         timeBetween={timeBetween}
         daysBetween={daysBetween}
+        timerOption="Days"
       />
       <HomeCTA isBirthdaySubmitted={isBirthdaySubmitted} />
     </Styled.LandingWrapper>

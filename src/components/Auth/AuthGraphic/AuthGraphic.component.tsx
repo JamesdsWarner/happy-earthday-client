@@ -1,5 +1,6 @@
 import * as Styled from './AuthGraphic.styles';
 import Image from 'next/image';
+import LineDivider from '@/components/shared/LineDivider/LineDivider.component';
 
 const AuthGraphic = () => {
   return (
@@ -12,7 +13,7 @@ const AuthGraphic = () => {
             Let’s celebrate both.
           </Styled.AuthGraphicSubheader>
         </Styled.AuthGraphicTextWrapper>
-        <Styled.LineDivider />
+        <LineDivider />
         <Image src="/images/Earth.png" width="400" height="400" alt="Image of the earth" />
       </Styled.AuthGraphicInner>
     </Styled.AuthGraphicWrapper>

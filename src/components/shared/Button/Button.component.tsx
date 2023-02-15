@@ -5,6 +5,7 @@ export const BUTTON_TYPE_CLASSES = {
   baseReversed: 'base-reversed',
   baseLong: 'base-long',
   longReversed: 'long-reversed',
+  logoutRed: 'logout-red',
 };
 
 const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) =>
@@ -13,6 +14,7 @@ const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) =>
     [BUTTON_TYPE_CLASSES.baseReversed]: Styled.BaseReversed,
     [BUTTON_TYPE_CLASSES.baseLong]: Styled.BaseLong,
     [BUTTON_TYPE_CLASSES.longReversed]: Styled.BaseLongReversed,
+    [BUTTON_TYPE_CLASSES.logoutRed]: Styled.LogoutRed,
   }[buttonType]);
 
 interface PropsFunction {
