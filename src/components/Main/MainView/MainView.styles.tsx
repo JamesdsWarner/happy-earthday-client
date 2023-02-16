@@ -84,12 +84,17 @@ export const TimerOption = styled.p<{ timerFormat: string }>`
   }
 `;
 
-export const MilestonesListWrapper = styled.div`
+export const MilestonesWrapper = styled.div`
   justify-self: center;
   align-self: center;
   display: flex;
   flex-direction: column;
   gap: 7px;
+  text-align: center;
+`;
+
+export const MilestonesListWrapper = styled.div`
+  margin-top: 40px;
 `;
 
 export const MilestonesListItem = styled.div<{ isPast: boolean }>`
@@ -106,3 +111,17 @@ export const Milestone = styled.p`
 `;
 
 export const MilestoneDate = styled.p``;
+
+export const YourNextMilestoneHeader = styled.h2`
+  color: #1f1f1f;
+`;
+
+export const NextMilestoneHeader = styled.h2`
+  color: #1f1f1f;
+  font-size: 50px;
+  font-weight: 900;
+`;
+
+export const NextMilestoneSubheading = styled.h2`
+  color: #1f1f1f;
+`;
