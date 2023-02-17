@@ -26,28 +26,27 @@ const Milestones: React.FC<PropsFunction> = ({ birthday }) => {
     <Styled.ViewOptionWrapper>
       <Styled.MainHeader>Milestones</Styled.MainHeader>
       <Styled.ViewOptionBodyWrapper>
-        <Styled.MilestonesWrapper>
-          <Styled.YourNextMilestoneHeader>Your next milestone is...</Styled.YourNextMilestoneHeader>
-          <Styled.NextMilestoneHeader>
-            {remainingMilestones[0].milestone} days
-          </Styled.NextMilestoneHeader>
-          <Styled.NextMilestoneSubheading>
-            on {remainingMilestones[0].date}
-          </Styled.NextMilestoneSubheading>
-          <Styled.MilestonesListWrapper>
-            {milestones.map((milestone: any) => {
-              const milestoneDate = addDays(birthday, milestone);
-              var isPast = isAfter(new Date(), milestoneDate);
+        <Styled.YourNextMilestoneHeader>Your next milestone is...</Styled.YourNextMilestoneHeader>
+        <Styled.NextMilestoneHeader>
+          {remainingMilestones[0].milestone} days
+        </Styled.NextMilestoneHeader>
+        <Styled.NextMilestoneSubheading>
+          on {remainingMilestones[0].date}
+        </Styled.NextMilestoneSubheading>
+        <Styled.MilestonesListWrapper>
+          {milestones.map((milestone: any) => {
+            const milestoneDate = addDays(birthday, milestone);
+            var isPast = isAfter(new Date(), milestoneDate);
+            var isNext = milestone === remainingMilestones[0].milestone;
 
-              return (
-                <Styled.MilestonesListItem isPast={isPast}>
-                  <Styled.Milestone>{milestone}</Styled.Milestone>
-                  <Styled.MilestoneDate>{milestoneDate.toDateString()}</Styled.MilestoneDate>
-                </Styled.MilestonesListItem>
-              );
-            })}
-          </Styled.MilestonesListWrapper>
-        </Styled.MilestonesWrapper>
+            return (
+              <Styled.ListItem isNext={isNext} isPast={isPast}>
+                <Styled.Milestone>{milestone}</Styled.Milestone>
+                <Styled.MilestoneDate>{milestoneDate.toDateString()}</Styled.MilestoneDate>
+              </Styled.ListItem>
+            );
+          })}
+        </Styled.MilestonesListWrapper>
       </Styled.ViewOptionBodyWrapper>
     </Styled.ViewOptionWrapper>
   );

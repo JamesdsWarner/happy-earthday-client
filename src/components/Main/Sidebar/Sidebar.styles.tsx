@@ -6,6 +6,7 @@ export const SidebarWrapper = styled.div`
   background-color: #f2f2f2;
   height: 100vh;
   position: relative;
+  display: flex;
 
   > * {
     &:last-child {
@@ -21,13 +22,7 @@ export const NavLinksWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  position: absolute;
-  left: 0;
-  width: 330px; /* for example */
-  right: 0;
-  /* margin-left: -100px; width divided by 2 */
   top: 50%;
-  transform: translateY(-50%);
   align-items: flex-start;
   margin: auto;
   gap: 10px;
@@ -47,14 +42,15 @@ export const NavLinkIcon = styled(Icon)<{ iconColor: string }>`
   font-size: 50px;
 `;
 
-export const NavLinkText = styled.p`
+export const NavLinkText = styled.p<{ chosenView: string }>`
   font-size: 25px;
   color: #1f1f1f;
   font-weight: 700;
   padding: 10px 15px 10px 15px;
   border-radius: 10px;
+  background-color: ${(props) => (props.chosenView === props.children ? '#bebebe' : 'transparent')};
   cursor: pointer;
   &:hover {
-    background-color: #bebebe;
+    background-color: ${(props) => (props.chosenView === props.children ? '#bebebe' : '#dddddd')};
   }
 `;

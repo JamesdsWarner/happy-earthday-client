@@ -16,6 +16,13 @@ export const EnterBirthdayWrapper = styled.div<{ isBirthdaySubmitted: boolean }>
   opacity: ${(props) => (props.isBirthdaySubmitted ? 0 : 1)};
 
   transition: opacity 1s ease;
+
+  > * {
+    &:last-child {
+      margin-top: 10px;
+    }
+  }
+
   /* transition-delay: 1.8s, 1.8s; */
 `;
 
@@ -24,3 +31,5 @@ export const EnterBirthdayInput = styled.input``;
 export const SubmitBirthday = styled.button``;
 
 export const EnterBirthdayText = styled.h1``;
+
+export const ButtonWrapper = styled.div``;

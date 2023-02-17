@@ -45,9 +45,10 @@ export const ViewOptionBodyWrapper = styled.div`
   top: 50%;
   transform: translateY(-50%);
   margin: auto;
-  gap: 260px;
+  /* gap: 260px; */
   z-index: 999;
   justify-content: center;
+  color: #1f1f1f;
 
   > * {
     &:first-child {
@@ -94,16 +95,19 @@ export const MilestonesWrapper = styled.div`
 `;
 
 export const MilestonesListWrapper = styled.div`
-  margin-top: 40px;
+  margin-top: 10px;
 `;
 
-export const MilestonesListItem = styled.div<{ isPast: boolean }>`
+export const ListItem = styled.div<{ isPast?: boolean; isNext?: boolean }>`
   color: #1f1f1f;
   font-size: 30px;
   display: flex;
-  gap: 130px;
+  gap: 30px;
   justify-content: space-between;
   text-decoration: ${(props) => (props.isPast ? 'line-through' : 'none')};
+  background-color: ${(props) => (props.isNext ? '#bebebe' : 'none')};
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
 `;
 
 export const Milestone = styled.p`
@@ -124,4 +128,50 @@ export const NextMilestoneHeader = styled.h2`
 
 export const NextMilestoneSubheading = styled.h2`
   color: #1f1f1f;
+`;
+
+export const InputFriendName = styled(Milestone).attrs({
+  as: 'input',
+})`
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  padding: 5px 10px 5px 10px;
+  color: #1f1f1f;
+`;
+
+export const FriendName = styled(Milestone)`
+  width: 50px;
+`;
+
+export const PlusIcon = styled.div`
+  border-radius: 50%;
+  background-color: #bebebe;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
+export const NoFriendsMessage = styled.p`
+  margin-bottom: 20px;
+  font-weight: 800;
+  font-size: 20px;
+`;
+
+export const AddNewFriend = styled.h3`
+  background-color: #bebebe;
+  padding: 10px 15px 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+`;
+
+export const FriendListItem = styled(ListItem)`
+  width: 600px;
+`;
+
+export const FriendsList = styled.div`
+  margin-top: 10px;
 `;

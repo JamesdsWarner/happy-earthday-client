@@ -7,7 +7,7 @@ export const HomeCTAWrapper = styled.div<{ isBirthdaySubmitted: boolean }>`
   position: absolute;
   left: 0;
   right: 0;
-  top: 60%;
+  top: 61%;
   transform: translateY(-50%);
   margin: auto;
   gap: 15px;

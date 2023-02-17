@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { intervalToDuration } from 'date-fns';
+import DateInput from '@/components/shared/DateInput/DateInput.component';
+import Button from '@/components/shared/Button/Button.component';
 
 import * as Styled from './EnterBirthday.styles';
 
@@ -14,22 +16,17 @@ const EnterBirthday: React.FC<PropsFunction> = ({
   setIsBirthdaySubmitted,
   isBirthdaySubmitted,
 }) => {
-  const handleBirthdayChange = (event: any) => {
-    setBirthday(event.target.value);
-    console.log(event.target.value);
-  };
-
   const handleBirthdaySubmit = () => {
     setIsBirthdaySubmitted(true);
+    console.log(isBirthdaySubmitted);
   };
   return (
     <Styled.EnterBirthdayWrapper isBirthdaySubmitted={isBirthdaySubmitted}>
       <Styled.EnterBirthdayText>When's your birthday?</Styled.EnterBirthdayText>
-      <Styled.EnterBirthdayInput
-        onChange={(event) => handleBirthdayChange(event)}
-        type="date"
-      ></Styled.EnterBirthdayInput>
-      <Styled.SubmitBirthday onClick={handleBirthdaySubmit}>Submit</Styled.SubmitBirthday>
+      <DateInput white setBirthday={setBirthday} />
+      <Styled.ButtonWrapper onClick={handleBirthdaySubmit}>
+        <Button text="Submit" icon />
+      </Styled.ButtonWrapper>
     </Styled.EnterBirthdayWrapper>
   );
 };

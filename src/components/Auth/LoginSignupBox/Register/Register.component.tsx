@@ -1,10 +1,18 @@
 import * as Styled from '../LoginSignupBox.styles';
 import Button from '@/components/shared/Button/Button.component';
+import DateInput from '@/components/shared/DateInput/DateInput.component';
+import { useState } from 'react';
 
-const Register = () => {
-  var now = new Date();
-  var maxDate = now.toISOString().substring(0, 10);
+interface PropsFunction {
+  setAuthOption: (item: any) => void;
+}
 
+const Register: React.FC<PropsFunction> = ({ setAuthOption }) => {
+  const [birthday, setBirthday] = useState<Date>();
+
+  const handleSwitchToRegisterClick = () => {
+    setAuthOption('Login');
+  };
   return (
     <Styled.LoginBoxWrapper>
       <Styled.InputsWrapper>
@@ -25,10 +33,13 @@ const Register = () => {
 
         <Styled.InputWrapper>
           <Styled.InputLabel>birthday</Styled.InputLabel>
-          <Styled.DateInput onKeyDown={(e) => e.preventDefault()} max={maxDate} type="date" />
+          <DateInput setBirthday={setBirthday} />
         </Styled.InputWrapper>
       </Styled.InputsWrapper>
       <Button buttonType="long-reversed" text="Sign up" />
+      <Styled.LoginCTA onClick={handleSwitchToRegisterClick}>
+        Already have an account? <Styled.CTASpan>Sign in here</Styled.CTASpan>
+      </Styled.LoginCTA>
     </Styled.LoginBoxWrapper>
   );
 };
