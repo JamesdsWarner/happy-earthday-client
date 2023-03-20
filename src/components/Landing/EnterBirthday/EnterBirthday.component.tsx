@@ -1,8 +1,5 @@
-import { useState } from 'react';
-import { intervalToDuration } from 'date-fns';
 import DateInput from '@/components/shared/DateInput/DateInput.component';
 import Button from '@/components/shared/Button/Button.component';
-
 import * as Styled from './EnterBirthday.styles';
 
 interface PropsFunction {

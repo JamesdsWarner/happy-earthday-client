@@ -31,18 +31,18 @@ export const MainHeader = styled.h2`
   border-bottom: 2px solid #dcdcdc;
 `;
 
-export const ViewOptionBodyWrapper = styled.div`
+export const ViewOptionBodyWrapper = styled.div<{ friends?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 65vw;
-  height: 90%;
+  height: 80%;
   /* align-items: center; */
   flex-direction: column;
   position: absolute;
   display: flex;
   border-radius: 35px;
-  top: 50%;
+  top: ${(props) => (props.friends ? 53 : 50)}%;
   transform: translateY(-50%);
   margin: auto;
   /* gap: 260px; */
@@ -95,7 +95,7 @@ export const MilestonesWrapper = styled.div`
 `;
 
 export const MilestonesListWrapper = styled.div`
-  margin-top: 10px;
+  margin-top: 40px;
 `;
 
 export const ListItem = styled.div<{ isPast?: boolean; isNext?: boolean }>`
@@ -132,6 +132,7 @@ export const NextMilestoneSubheading = styled.h2`
 
 export const InputFriendName = styled(Milestone).attrs({
   as: 'input',
+  maxlength: 9,
 })`
   background-color: transparent;
   border: none;
@@ -174,4 +175,19 @@ export const FriendListItem = styled(ListItem)`
 
 export const FriendsList = styled.div`
   margin-top: 10px;
+  overflow: scroll;
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+  }
+`;
+
+export const NoFriendsAddFriendWrapper = styled.div`
+  /* margin-top: 60px; */
 `;

@@ -51,6 +51,7 @@ export const InputsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+  margin-bottom: 40px;
 `;
 
 export const InputWrapper = styled.div`
@@ -59,7 +60,7 @@ export const InputWrapper = styled.div`
   gap: 10px;
 `;
 
-export const InputLabel = styled.p`
+export const InputLabel = styled.label`
   font-size: 14px;
 `;
 
@@ -90,4 +91,11 @@ export const LoginCTA = styled.p`
 
 export const CTASpan = styled.span`
   color: #1f1f1f;
+`;
+
+export const Form = styled.form``;
+
+export const SubmitWrapper = styled.button`
+  border: none;
+  background-color: transparent;
 `;

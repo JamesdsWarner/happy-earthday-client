@@ -3,13 +3,11 @@ import ParticlesBackground from '../shared/ParticlesBackground/ParticlesBackgrou
 import data from '../../../data/particlesjs-stars-config';
 import Header from '../shared/Header/Header.component';
 import EnterBirthday from './EnterBirthday/EnterBirthday.component';
-// import EarthdayStat from './EarthdayStat/EarthdayStat.component';
 import HomeCTA from './HomeCTA/HomeCTA.component';
 import EarthdayTimer from '../shared/EarthdayTimer/EarthdayTimer.component';
-import { useState } from 'react';
-import intervalToDuration from 'date-fns/intervalToDuration';
-import differenceInCalendarDays from 'date-fns/differenceInCalendarDays';
+import { useState, useContext, useEffect } from 'react';
 import remainingDays from 'helpers/remainingDays';
+import { GlobalContext } from '../../context/GlobalState';
 
 const Landing = () => {
   const [birthday, setBirthday] = useState<Date>();
@@ -17,7 +15,14 @@ const Landing = () => {
   const [daysBetween, setDaysBetween] = useState<Number>(0);
   const [isBirthdaySubmitted, setIsBirthdaySubmitted] = useState<boolean>(false);
 
-  // console.log(daysBetween);
+  const { setLandingDate, landingDate } = useContext(GlobalContext);
+
+  useEffect(() => {
+    if (birthday) {
+      setLandingDate(new Date());
+    }
+    console.log(landingDate);
+  }, [isBirthdaySubmitted]);
 
   if (isBirthdaySubmitted) {
     setInterval(() => remainingDays({ birthday, setTimeBetween, setDaysBetween }), 1000);

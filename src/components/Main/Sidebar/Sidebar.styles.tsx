@@ -54,3 +54,5 @@ export const NavLinkText = styled.p<{ chosenView: string }>`
     background-color: ${(props) => (props.chosenView === props.children ? '#bebebe' : '#dddddd')};
   }
 `;
+
+export const LogoutWrapper = styled.div``;

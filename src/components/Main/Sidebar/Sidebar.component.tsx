@@ -1,5 +1,9 @@
 import * as Styled from './Sidebar.styles';
 import Button from '@/components/shared/Button/Button.component';
+import axios from 'axios';
+import { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
+import { useState } from 'react';
 
 interface PropsFunction {
   setChosenView: (item: any) => void;
@@ -7,8 +11,23 @@ interface PropsFunction {
 }
 
 const Sidebar: React.FC<PropsFunction> = ({ setChosenView, chosenView }) => {
+  const [user, setUser] = useState(null);
+
+  const navigate = useRouter();
+
   const handleClick = (event: any) => {
     setChosenView(event.target.innerHTML);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await axios.get('/api/auth/logout');
+      setUser(null);
+      toast.success('User logged out');
+      navigate.push('/auth');
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <Styled.SidebarWrapper>
@@ -37,7 +56,9 @@ const Sidebar: React.FC<PropsFunction> = ({ setChosenView, chosenView }) => {
           </Styled.NavLinkText>
         </Styled.NavLink>
       </Styled.NavLinksWrapper>
-      <Button buttonType={'logout-red'} text="Logout" />
+      <Styled.LogoutWrapper onClick={handleLogout}>
+        <Button buttonType={'logout-red'} text="Logout" />
+      </Styled.LogoutWrapper>
     </Styled.SidebarWrapper>
   );
 };
