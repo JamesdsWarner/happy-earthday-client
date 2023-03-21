@@ -1,7 +1,7 @@
 import Button from '../../shared/Button/Button.component';
 import Link from 'next/link';
 import { useContext } from 'react';
-import { GlobalContext } from '@/context/GlobalState';
+import { StateContext } from '@/context/GlobalState';
 import * as Styled from './HomeCTA.styles';
 
 interface PropsFunction {
@@ -9,14 +9,18 @@ interface PropsFunction {
 }
 
 const HomeCTA: React.FC<PropsFunction> = ({ isBirthdaySubmitted }) => {
-  const { setAuthOption } = useContext(GlobalContext);
+  const { setAuthOption } = useContext(StateContext);
+
+  const handleClick = () => {
+    setAuthOption('Register');
+  };
 
   return (
     <Styled.HomeCTAWrapper isBirthdaySubmitted={isBirthdaySubmitted}>
       <Styled.CTAText>
         Save and track your friends and family’s Earthday’s by signing up:
       </Styled.CTAText>
-      <Link href="/auth">
+      <Link onClick={handleClick} href="/auth">
         <Button text="Sign up" icon />
       </Link>
     </Styled.HomeCTAWrapper>

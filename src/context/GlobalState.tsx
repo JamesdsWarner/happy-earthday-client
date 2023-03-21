@@ -1,28 +1,30 @@
 import { createContext, useState, Dispatch, SetStateAction, useContext } from 'react';
 
-export type GlobalContent = {
+type StateContextType = {
   authOption: string;
-  setAuthOption: (c: string) => void;
+  setAuthOption: Dispatch<SetStateAction<string>>;
   landingDate: Date;
-  setLandingDate: (c: Date) => void;
+  setLandingDate: Dispatch<SetStateAction<Date>>;
 };
 
-export const GlobalContext = createContext<GlobalContent>({
+export const StateContext = createContext<StateContextType>({
   authOption: 'Login',
   setAuthOption: () => {},
   landingDate: new Date(),
   setLandingDate: () => {},
 });
 
-// const useGlobalContext = () => useContext(GlobalContext);
+type ContextProviderProps = {
+  children: React.ReactNode;
+};
 
-export const GlobalProvider = (children: any) => {
+export const GlobalProvider = ({ children }: ContextProviderProps) => {
   const [authOption, setAuthOption] = useState('Login');
   const [landingDate, setLandingDate] = useState(new Date());
 
   return (
-    <GlobalContext.Provider value={{ authOption, setAuthOption, landingDate, setLandingDate }}>
+    <StateContext.Provider value={{ authOption, setAuthOption, landingDate, setLandingDate }}>
       {children}
-    </GlobalContext.Provider>
+    </StateContext.Provider>
   );
 };

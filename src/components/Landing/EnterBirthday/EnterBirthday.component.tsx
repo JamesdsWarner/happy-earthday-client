@@ -3,13 +3,13 @@ import Button from '@/components/shared/Button/Button.component';
 import * as Styled from './EnterBirthday.styles';
 
 interface PropsFunction {
-  setBirthday: (item: any) => void;
+  // setBirthday: (item: any) => void;
   setIsBirthdaySubmitted: (item: any) => void;
   isBirthdaySubmitted: any;
 }
 
 const EnterBirthday: React.FC<PropsFunction> = ({
-  setBirthday,
+  // setBirthday,
   setIsBirthdaySubmitted,
   isBirthdaySubmitted,
 }) => {
@@ -20,7 +20,7 @@ const EnterBirthday: React.FC<PropsFunction> = ({
   return (
     <Styled.EnterBirthdayWrapper isBirthdaySubmitted={isBirthdaySubmitted}>
       <Styled.EnterBirthdayText>When's your birthday?</Styled.EnterBirthdayText>
-      <DateInput white setBirthday={setBirthday} />
+      <DateInput white />
       <Styled.ButtonWrapper onClick={handleBirthdaySubmit}>
         <Button text="Submit" icon />
       </Styled.ButtonWrapper>

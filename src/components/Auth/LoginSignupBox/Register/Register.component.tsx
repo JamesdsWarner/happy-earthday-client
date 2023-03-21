@@ -1,16 +1,19 @@
 import * as Styled from '../LoginSignupBox.styles';
 import Button from '@/components/shared/Button/Button.component';
 import DateInput from '@/components/shared/DateInput/DateInput.component';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { StateContext } from '@/context/GlobalState';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-interface PropsFunction {
-  setAuthOption: (item: any) => void;
-}
+// interface PropsFunction {
+//   setAuthOption: (item: any) => void;
+// }
 
-const Register: React.FC<PropsFunction> = ({ setAuthOption }) => {
-  const [birthday, setBirthday] = useState<Date>();
+const Register = () => {
+  // const [birthday, setBirthday] = useState<Date>();
+
+  const { setAuthOption, landingDate } = useContext(StateContext);
 
   const register = async (e: any) => {
     e.preventDefault();
@@ -18,7 +21,7 @@ const Register: React.FC<PropsFunction> = ({ setAuthOption }) => {
       first_name: e.target.name.value,
       email: e.target.email.value,
       password: e.target.password.value,
-      birthday: birthday,
+      birthday: landingDate,
     };
 
     try {
@@ -57,7 +60,7 @@ const Register: React.FC<PropsFunction> = ({ setAuthOption }) => {
 
           <Styled.InputWrapper>
             <Styled.InputLabel>birthday</Styled.InputLabel>
-            <DateInput setBirthday={setBirthday} />
+            <DateInput landingDate={landingDate} />
           </Styled.InputWrapper>
         </Styled.InputsWrapper>
         <Styled.SubmitWrapper type="submit">

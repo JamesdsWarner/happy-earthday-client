@@ -7,7 +7,7 @@ import HomeCTA from './HomeCTA/HomeCTA.component';
 import EarthdayTimer from '../shared/EarthdayTimer/EarthdayTimer.component';
 import { useState, useContext, useEffect } from 'react';
 import remainingDays from 'helpers/remainingDays';
-import { GlobalContext } from '../../context/GlobalState';
+import { StateContext } from '../../context/GlobalState';
 
 const Landing = () => {
   const [birthday, setBirthday] = useState<Date>();
@@ -15,17 +15,14 @@ const Landing = () => {
   const [daysBetween, setDaysBetween] = useState<Number>(0);
   const [isBirthdaySubmitted, setIsBirthdaySubmitted] = useState<boolean>(false);
 
-  const { setLandingDate, landingDate } = useContext(GlobalContext);
+  const { setLandingDate, landingDate } = useContext(StateContext);
 
   useEffect(() => {
-    if (birthday) {
-      setLandingDate(new Date());
-    }
-    console.log(landingDate);
+    setLandingDate(new Date());
   }, [isBirthdaySubmitted]);
 
   if (isBirthdaySubmitted) {
-    setInterval(() => remainingDays({ birthday, setTimeBetween, setDaysBetween }), 1000);
+    setInterval(() => remainingDays({ landingDate, setTimeBetween, setDaysBetween }), 1000);
   }
 
   return (
@@ -36,7 +33,7 @@ const Landing = () => {
       <EnterBirthday
         isBirthdaySubmitted={isBirthdaySubmitted}
         setIsBirthdaySubmitted={setIsBirthdaySubmitted}
-        setBirthday={setBirthday}
+        // setBirthday={setBirthday}
       />
 
       <EarthdayTimer

@@ -1,14 +1,18 @@
 import * as Styled from '../LoginSignupBox.styles';
 import Button from '@/components/shared/Button/Button.component';
 import { useRouter } from 'next/router';
+import { useContext } from 'react';
+import { StateContext } from '@/context/GlobalState';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-interface PropsFunction {
-  setAuthOption: (item: any) => void;
-}
+// interface PropsFunction {
+//   setAuthOption: (item: any) => void;
+// }
 
-const Login: React.FC<PropsFunction> = ({ setAuthOption }) => {
+const Login = () => {
+  const { authOption, setAuthOption } = useContext(StateContext);
+
   const navigate = useRouter();
   const login = async (e: any) => {
     e.preventDefault();
@@ -24,12 +28,13 @@ const Login: React.FC<PropsFunction> = ({ setAuthOption }) => {
       toast.success('Login success');
     } catch (err) {
       console.log(err);
-      toast.error('Login failer');
+      toast.error('Login failed');
     }
   };
 
   const handleSwitchToRegisterClick = () => {
     setAuthOption('Register');
+    console.log(authOption);
   };
   return (
     <Styled.LoginBoxWrapper>

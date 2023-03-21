@@ -2,13 +2,13 @@ import * as Styled from './Header.styles';
 import Button from '../Button/Button.component';
 import Link from 'next/link';
 import { useContext } from 'react';
-import { GlobalContext } from '@/context/GlobalState';
+import { StateContext } from '@/context/GlobalState';
 
 const Header = () => {
-  const { setAuthOption } = useContext(GlobalContext);
+  const { setAuthOption } = useContext(StateContext);
 
   const handleSignInClick = () => {
-    setAuthOption('Sign in');
+    setAuthOption('Login');
   };
 
   return (

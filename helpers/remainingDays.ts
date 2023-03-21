@@ -5,7 +5,8 @@ import differenceInCalendarMonths from 'date-fns/differenceInCalendarMonths';
 import React from 'react';
 
 interface TimeBetween {
-  birthday: any;
+  birthday?: any;
+  landingDate?: any;
   setTimeBetween: any;
   setDaysBetween: any;
   setWeeksBetween?: any;
@@ -14,13 +15,14 @@ interface TimeBetween {
 
 const remainingDays = ({
   birthday,
+  landingDate,
   setTimeBetween,
   setDaysBetween,
   setWeeksBetween,
   setMonthsBetween,
 }: TimeBetween) => {
   const now = new Date();
-  const end = new Date(birthday!);
+  const end = new Date(landingDate! || birthday!);
   const newTimeBetween = intervalToDuration({
     start: now,
     end: end,
